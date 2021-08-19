@@ -15,20 +15,17 @@ class Sorter {
     private val threads = cores * 2 + 1
     val executor = Executors.newFixedThreadPool(threads)
 
-    @Volatile
-    private var i: AtomicInteger = AtomicInteger(0)
+    private var i = 0
 
     @Volatile
     private var files = ArrayList<File>()
 
     fun sort(list: ArrayList<String>) {
+        var file: File?
+            file = File("temp_$i.txt")
+            ++i
+            files.add(file!!)
         val worker = Runnable {
-            var file: File?
-            synchronized(i) {
-                file = File("temp_$i.txt")
-                i.incrementAndGet()
-                files.add(file!!)
-            }
             file?.createNewFile()
             file?.writeText("")
             list.sort()
@@ -72,6 +69,6 @@ class Sorter {
                 lines.remove(key)
             }
         }
-        for(file in files) println(Files.delete(Path(file.absolutePath)))
+        for(file in files) Files.delete(Path(file.absolutePath))
     }
 }
