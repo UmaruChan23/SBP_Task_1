@@ -1,13 +1,9 @@
 import java.io.BufferedReader
 import java.io.File
 import java.nio.file.Files
-import java.nio.file.Path
-import java.util.*
 import java.util.concurrent.Executors
-import java.util.concurrent.atomic.AtomicInteger
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
-import kotlin.concurrent.thread
 import kotlin.io.path.Path
 
 class Sorter {

@@ -11,7 +11,7 @@ class Reader {
         val list : ArrayList<String> = ArrayList()
         for(str in file.readLines()) {
             list.add(str)
-            if(list.size == 10) {
+            if(list.size == 10000) {
                 sorter.sort(ArrayList(list))
                 list.clear()
             }
